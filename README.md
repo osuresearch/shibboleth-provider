@@ -12,7 +12,21 @@ yarn add next-auth @osuresearch/shibboleth-provider
 
 ### Cognito Pool
 
-TDOO: Document what claims need to be exposed
+At a minimum, the following user pool attributes should be mapped to SAML attributes:
+
+|Pool Attribute
+|---
+|email
+|name
+|nickname
+|username
+|custom:affiliation
+|custom:department
+|custom:entitlements
+|custom:idmid
+|custom:osuid
+
+For the appropriate SAML attributes or further help in configuring Cognito to talk to Shibboleth, contact OTDI.
 
 ### NextJS
 
@@ -33,6 +47,12 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
+```
+
+In the above example, `COGNITO_ISSUER` looks like the following:
+
+```
+https://cognito-idp.{region}.amazonaws.com/{user_pool_id}/"
 ```
 
 ## Usage
